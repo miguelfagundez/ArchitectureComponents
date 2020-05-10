@@ -14,8 +14,10 @@ import com.devproject.miguelfagundez.employeemanagementapp.R;
 import com.devproject.miguelfagundez.employeemanagementapp.adapters.EmployeeAdapter;
 import com.devproject.miguelfagundez.employeemanagementapp.listeners.EmployeeListener;
 import com.devproject.miguelfagundez.employeemanagementapp.model.pojo.Employee;
+import com.devproject.miguelfagundez.employeemanagementapp.utils.Constants;
 import com.devproject.miguelfagundez.employeemanagementapp.utils.Testing;
 import com.devproject.miguelfagundez.employeemanagementapp.view.BaseActivity;
+import com.devproject.miguelfagundez.employeemanagementapp.view.details.EmployeeFragment;
 import com.devproject.miguelfagundez.employeemanagementapp.viewmodel.EmployeeViewModel;
 
 import java.util.List;
@@ -39,19 +41,23 @@ public class EmployeeListActivity extends BaseActivity implements EmployeeListen
     // ViewModel Data
     private EmployeeViewModel viewModel;
 
+    // Fragments
+    private EmployeeFragment employeeFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_list);
 
         setupViews();
+        setupFragments();
         setupViewModel();
         setupObservers();
         setupListeners();
         setupRecyclerView();
 
-    }
 
+    }
 
     private void setupViews() {
         //******************
@@ -60,6 +66,11 @@ public class EmployeeListActivity extends BaseActivity implements EmployeeListen
         button = findViewById(R.id.btnTestSearchEmployees);
         recyclerView = findViewById(R.id.rvEmployeeList);
     }
+
+    private void setupFragments() {
+        employeeFragment = new EmployeeFragment();
+    }
+
 
     private void setupViewModel() {
         // Setup ViewModel
@@ -106,5 +117,21 @@ public class EmployeeListActivity extends BaseActivity implements EmployeeListen
         // Here I will be calling a fragment
         Toast.makeText(this, "Click: " + id, Toast.LENGTH_SHORT).show();
 
+        Bundle bundle = new Bundle();
+
+        bundle.putString(Constants.EMPLOYEE_ID, id);
+        bundle.putString(Constants.EMPLOYEE_NAME, name);
+        bundle.putString(Constants.EMPLOYEE_ROLE, role);
+
+        employeeFragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.anim_in,
+                        R.anim.anim_out,
+                        R.anim.anim_in,
+                        R.anim.anim_out)
+                .replace(R.id.fragmentContainer, employeeFragment)
+                .addToBackStack(employeeFragment.getTag())
+                .commit();
     }
 }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EmployeeManagementApp</string>
+
+    <string name="employee_details">Employee details</string>
+    <string name="employee_first_name">Employee first name</string>
+    <string name="employee_last_name">Employee last name</string>
+    <string name="employee_role">Employee role</string>
 </resources>

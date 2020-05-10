@@ -8,20 +8,15 @@
     android:background="@android:color/white"
     tools:context=".view.home.EmployeeListActivity">
 
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/dimen_8dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEmployeeList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-    <Button
-        android:id="@+id/btnTestSearchEmployees"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test ProgressBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

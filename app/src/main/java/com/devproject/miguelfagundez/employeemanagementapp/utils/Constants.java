@@ -18,4 +18,11 @@ public class Constants {
     // Testing variables
     //******************************************
     public static final String TAG = "Testing";
+
+    //******************************************
+    // Fragments keys
+    //******************************************
+    public static final String EMPLOYEE_ID = "employee_id";
+    public static final String EMPLOYEE_NAME = "employee_name";
+    public static final String EMPLOYEE_ROLE = "employee_role";
 }
