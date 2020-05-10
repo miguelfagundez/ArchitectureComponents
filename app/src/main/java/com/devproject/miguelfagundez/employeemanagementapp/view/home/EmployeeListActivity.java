@@ -34,7 +34,6 @@ public class EmployeeListActivity extends BaseActivity implements EmployeeListen
     private String TAG = "Test";
 
     // View members
-    private Button button;
     private RecyclerView recyclerView;
     private EmployeeAdapter adapter;
 
@@ -60,10 +59,6 @@ public class EmployeeListActivity extends BaseActivity implements EmployeeListen
     }
 
     private void setupViews() {
-        //******************
-        // Testing
-        //******************
-        button = findViewById(R.id.btnTestSearchEmployees);
         recyclerView = findViewById(R.id.rvEmployeeList);
     }
 
@@ -94,12 +89,6 @@ public class EmployeeListActivity extends BaseActivity implements EmployeeListen
 
     private void setupListeners() {
         // Listeners
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewModel.searchAllEmployees();
-            }
-        });
     }
 
     private void setupRecyclerView() {
